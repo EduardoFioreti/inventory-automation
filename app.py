@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
-
-# Lista para salvar os produtos durante a sessão (limpa se o servidor reiniciar)
 lista_produtos = []
 
 @app.route('/')
@@ -11,9 +9,16 @@ def index():
 
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar():
-    # Coletando os 7 campos do formulário
+    codigo = request.form.get('codigo')
+    
+    # Lógica de Edição: Se o código já existe, remove o antigo antes de inserir o novo
+    for i, p in enumerate(lista_produtos):
+        if p['codigo'] == codigo:
+            lista_produtos.pop(i)
+            break
+
     novo_item = {
-        'codigo': request.form.get('codigo'),
+        'codigo': codigo,
         'marca': request.form.get('marca'),
         'tipo': request.form.get('tipo'),
         'categoria': request.form.get('categoria'),
@@ -21,11 +26,14 @@ def cadastrar():
         'custo': request.form.get('custo'),
         'obs': request.form.get('obs') if request.form.get('obs') else "-"
     }
-    
-    # Adicionando no topo da lista para visualização imediata
     lista_produtos.insert(0, novo_item)
-    
-    # Importante: Redireciona de volta para a home para limpar o formulário
+    return redirect('/')
+
+# --- NOVA ROTA: EXCLUIR ---
+@app.route('/excluir/<codigo>')
+def excluir(codigo):
+    global lista_produtos
+    lista_produtos = [p for p in lista_produtos if p['codigo'] != codigo]
     return redirect('/')
 
 if __name__ == '__main__':
