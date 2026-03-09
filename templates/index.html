@@ -13,6 +13,7 @@
         .btn-submit:hover { background-color: #096dd9; }
         .table-container { background: white; border-radius: 10px; padding: 20px; }
         .badge-code { font-family: monospace; font-size: 0.9rem; }
+        .sticky-form { position: sticky; top: 20px; }
     </style>
 </head>
 <body>
@@ -25,51 +26,59 @@
 <div class="container-fluid px-4">
     <div class="row">
         <div class="col-lg-3 mb-4">
-            <div class="card p-4 shadow-sm sticky-top" style="top: 20px;">
+            <div class="card p-4 shadow-sm sticky-form">
                 <h4 id="form-title" class="mb-3">Novo Produto</h4>
                 <form action="/cadastrar" method="POST" id="produto-form">
                     <div class="mb-2">
                         <label class="form-label small fw-bold">Código</label>
-                        <input type="text" name="codigo" id="id_codigo" class="form-control" required>
+                        <input type="text" name="codigo" id="id_codigo" class="form-control" placeholder="Ex: MOLO0001" required>
                     </div>
                     <div class="mb-2">
                         <label class="form-label small fw-bold">Marca</label>
-                        <input type="text" name="marca" id="id_marca" class="form-control" required>
+                        <input type="text" name="marca" id="id_marca" class="form-control" placeholder="Ex: Dell" required>
                     </div>
                     <div class="mb-2">
                         <label class="form-label small fw-bold">Tipo</label>
-                        <input type="text" name="tipo" id="id_tipo" class="form-control" required>
+                        <input type="text" name="tipo" id="id_tipo" class="form-control" placeholder="Ex: Notebook" required>
                     </div>
                     <div class="mb-2">
                         <label class="form-label small fw-bold">Categoria</label>
-                        <input type="number" name="categoria" id="id_categoria" class="form-control" required>
+                        <input type="number" name="categoria" id="id_categoria" class="form-control" placeholder="1" required>
                     </div>
                     <div class="row">
                         <div class="col-6 mb-2">
                             <label class="form-label small fw-bold">Preço</label>
-                            <input type="number" step="0.01" name="preco" id="id_preco" class="form-control" required>
+                            <input type="number" step="0.01" name="preco" id="id_preco" class="form-control" placeholder="0.00" required>
                         </div>
                         <div class="col-6 mb-2">
                             <label class="form-label small fw-bold">Custo</label>
-                            <input type="number" step="0.01" name="custo" id="id_custo" class="form-control" required>
+                            <input type="number" step="0.01" name="custo" id="id_custo" class="form-control" placeholder="0.00" required>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Observações</label>
-                        <input type="text" name="obs" id="id_obs" class="form-control">
+                        <input type="text" name="obs" id="id_obs" class="form-control" placeholder="Opcional">
                     </div>
                     <button type="submit" id="btn_enviar" class="btn btn-primary btn-submit w-100 py-2">Salvar Produto</button>
-                    <button type="button" onclick="limparFormulario()" class="btn btn-link btn-sm w-100 mt-2 text-decoration-none text-muted">Limpar</button>
+                    <button type="button" onclick="limparFormulario()" class="btn btn-link btn-sm w-100 mt-2 text-decoration-none text-muted">Limpar Campos</button>
                 </form>
             </div>
         </div>
 
         <div class="col-lg-9">
             <div class="table-container shadow-sm">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="m-0">Itens no Sistema</h4>
-                    <span class="badge bg-primary">{{ produtos|length }} Itens</span>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="m-0">Itens em Estoque</h4>
+                    <div class="d-flex align-items-center">
+                        <span class="badge bg-primary px-3 py-2 me-3">{{ produtos|length }} Itens Registrados</span>
+                        {% if produtos|length > 0 %}
+                        <a href="/limpar_tudo" class="btn btn-outline-danger btn-sm" onclick="return confirm('ATENÇÃO: Isso apagará TODOS os itens da lista. Tem certeza?')">
+                            🗑️ Resetar Lista
+                        </a>
+                        {% endif %}
+                    </div>
                 </div>
+
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
                         <thead class="table-light">
@@ -77,8 +86,8 @@
                                 <th>Cód.</th>
                                 <th>Marca / Tipo</th>
                                 <th>Cat.</th>
-                                <th>Preço</th>
-                                <th>Custo</th>
+                                <th>Preço de Venda</th>
+                                <th>Custo Unitário</th>
                                 <th>Observações</th>
                                 <th class="text-center">Ações</th>
                             </tr>
@@ -88,7 +97,7 @@
                             <tr>
                                 <td><span class="badge bg-dark badge-code">{{ p.codigo }}</span></td>
                                 <td>
-                                    <div class="fw-bold">{{ p.marca }}</div>
+                                    <div class="fw-bold text-uppercase">{{ p.marca }}</div>
                                     <div class="small text-muted">{{ p.tipo }}</div>
                                 </td>
                                 <td><span class="badge rounded-pill bg-light text-dark border">{{ p.categoria }}</span></td>
@@ -99,13 +108,13 @@
                                     <div class="btn-group">
                                         <button class="btn btn-sm btn-outline-warning" 
                                                 onclick="preencherEdicao('{{ p.codigo }}', '{{ p.marca }}', '{{ p.tipo }}', '{{ p.categoria }}', '{{ p.preco }}', '{{ p.custo }}', '{{ p.obs }}')"
-                                                title="Editar">
+                                                title="Editar item">
                                             ✏️
                                         </button>
                                         <a href="/excluir/{{ p.codigo }}" 
                                            class="btn btn-sm btn-outline-danger" 
-                                           onclick="return confirm('Excluir item {{ p.codigo }}?')"
-                                           title="Excluir">
+                                           onclick="return confirm('Deseja excluir permanentemente o item {{ p.codigo }}?')"
+                                           title="Excluir item">
                                             🗑️
                                         </a>
                                     </div>
@@ -113,7 +122,12 @@
                             </tr>
                             {% else %}
                             <tr>
-                                <td colspan="7" class="text-center py-4 text-muted">Nenhum produto cadastrado no sistema.</td>
+                                <td colspan="7" class="text-center py-5">
+                                    <div class="text-muted">
+                                        <h5>O inventário está vazio</h5>
+                                        <p>Use o formulário ou inicie a automação Python para popular os dados.</p>
+                                    </div>
+                                </td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -126,11 +140,12 @@
 
 <script>
     function preencherEdicao(codigo, marca, tipo, categoria, preco, custo, obs) {
-        // Altera o título do formulário para avisar que está editando
-        document.getElementById('form-title').innerText = "Editando " + codigo;
-        document.getElementById('form-title').classList.add('text-warning');
+        // Altera o visual do título para indicar edição
+        const title = document.getElementById('form-title');
+        title.innerText = "Editando: " + codigo;
+        title.className = "mb-3 text-warning fw-bold";
 
-        // Preenche os campos
+        // Preenche os campos do formulário com os dados da linha
         document.getElementById('id_codigo').value = codigo;
         document.getElementById('id_marca').value = marca;
         document.getElementById('id_tipo').value = tipo;
@@ -139,14 +154,15 @@
         document.getElementById('id_custo').value = custo;
         document.getElementById('id_obs').value = (obs === '-' ? '' : obs);
 
-        // Foca no primeiro campo e sobe a tela
+        // Rola a tela suavemente para o formulário
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function limparFormulario() {
         document.getElementById('produto-form').reset();
-        document.getElementById('form-title').innerText = "Novo Produto";
-        document.getElementById('form-title').classList.remove('text-warning');
+        const title = document.getElementById('form-title');
+        title.innerText = "Novo Produto";
+        title.className = "mb-3";
     }
 </script>
 

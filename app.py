@@ -38,3 +38,10 @@ def excluir(codigo):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    # --- NOVA ROTA: LIMPAR TUDO ---
+@app.route('/limpar_tudo')
+def limpar_tudo():
+    global lista_produtos
+    lista_produtos = []
+    return redirect('/')
