@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-# Lista na memória para armazenar os produtos temporariamente
+# Lista para salvar os produtos durante a sessão (limpa se o servidor reiniciar)
 lista_produtos = []
 
 @app.route('/')
@@ -11,7 +11,7 @@ def index():
 
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar():
-    # Coletando os 7 campos enviados pelo robô ou formulário
+    # Coletando os 7 campos do formulário
     novo_item = {
         'codigo': request.form.get('codigo'),
         'marca': request.form.get('marca'),
@@ -22,8 +22,10 @@ def cadastrar():
         'obs': request.form.get('obs') if request.form.get('obs') else "-"
     }
     
-    # Adiciona no topo da lista
+    # Adicionando no topo da lista para visualização imediata
     lista_produtos.insert(0, novo_item)
+    
+    # Importante: Redireciona de volta para a home para limpar o formulário
     return redirect('/')
 
 if __name__ == '__main__':
