@@ -139,12 +139,10 @@
 
 <script>
     function preencherEdicao(codigo, marca, tipo, categoria, preco, custo, obs) {
-        // Altera o visual do título para indicar edição
         const title = document.getElementById('form-title');
         title.innerText = "Editando: " + codigo;
         title.className = "mb-3 text-warning fw-bold";
 
-        // Preenche os campos do formulário com os dados da linha
         document.getElementById('id_codigo').value = codigo;
         document.getElementById('id_marca').value = marca;
         document.getElementById('id_tipo').value = tipo;
@@ -153,7 +151,6 @@
         document.getElementById('id_custo').value = custo;
         document.getElementById('id_obs').value = (obs === '-' ? '' : obs);
 
-        // Rola a tela suavemente para o formulário
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 

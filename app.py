@@ -11,7 +11,6 @@ def index():
 def cadastrar():
     codigo = request.form.get('codigo')
     
-    # Lógica de Edição: Se o código já existe, remove o antigo antes de inserir o novo
     for i, p in enumerate(lista_produtos):
         if p['codigo'] == codigo:
             lista_produtos.pop(i)
@@ -29,7 +28,6 @@ def cadastrar():
     lista_produtos.insert(0, novo_item)
     return redirect('/')
 
-# --- NOVA ROTA: EXCLUIR ---
 @app.route('/excluir/<codigo>')
 def excluir(codigo):
     global lista_produtos
@@ -39,7 +37,6 @@ def excluir(codigo):
 if __name__ == '__main__':
     app.run(debug=True)
 
-    # --- NOVA ROTA: LIMPAR TUDO ---
 @app.route('/limpar_tudo')
 def limpar_tudo():
     global lista_produtos
