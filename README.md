@@ -41,8 +41,8 @@ Este projeto une **Desenvolvimento Web** com **Automação de Processos (RPA)**.
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/EduardoFioreti/ProjetoCadastro.git
-cd ProjetoCadastro
+git clone https://github.com/EduardoFioreti/inventory-automation.git
+cd inventory-automation
 ```
 
 ### 2. Instale as dependências
@@ -72,7 +72,7 @@ python automacao_web.py
 ## 📁 Estrutura do Projeto
 
 ```
-ProjetoCadastro/
+inventory-automation/
 ├── app.py                # servidor Flask e rotas
 ├── automacao_web.py      # script de automação RPA
 ├── produtos.csv          # lista de produtos para automação
