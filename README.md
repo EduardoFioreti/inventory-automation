@@ -42,20 +42,20 @@ Este projeto une **Desenvolvimento Web** com **Automação de Processos (RPA)**.
 ### 1. Clone o repositório
 git clone [https://github.com/EduardoFioreti/inventory-automation.git](https://github.com/EduardoFioreti/inventory-automation.git)
 cd inventory-automation
-
+---
 2. Instale as dependências:
 pip install -r requirements.txt
-
+---
 3. Inicie o servidor:
 python app.py
-
+---
 4. Acesse no navegador:
 http://localhost:5000
-
+---
 5. Para rodar a automação RPA
 Com o servidor rodando, abra outro terminal e execute:
 python automacao_web.py
-
+---
 💡 O robô vai ler o arquivo produtos.csv e cadastrar os itens automaticamente. Pressione ESC a qualquer momento para interromper a execução.
 📁 Estrutura do Projeto
 inventory-automation/
@@ -65,9 +65,9 @@ inventory-automation/
 ├── requirements.txt      # Dependências e bibliotecas do projeto
 ├── templates/            # Páginas e interfaces HTML (Jinja2)
 └── vercel.json           # Configurações de deploy na nuvem
-
+---
 👨‍💻 Autor
 Eduardo Fioreti
-
+---
 🔗 LinkedIn: linkedin.com/in/eduardo-fioreti-4a8931371
 📧 Email: eduardofioretidev@gmail.com
