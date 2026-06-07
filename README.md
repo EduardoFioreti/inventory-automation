@@ -59,12 +59,19 @@ python automacao_web.py
 💡 O robô vai ler o arquivo produtos.csv e cadastrar os itens automaticamente. Pressione ESC a qualquer momento para interromper a execução.
 ---
 📁 Estrutura do Projeto
+---
 inventory-automation/
+---
 ├── app.py                # Servidor Flask e rotas da aplicação
+---
 ├── automacao_web.py      # Script de automação RPA (Selenium)
+---
 ├── produtos.csv          # Lista de produtos base para a automação
+---
 ├── requirements.txt      # Dependências e bibliotecas do projeto
+---
 ├── templates/            # Páginas e interfaces HTML (Jinja2)
+---
 └── vercel.json           # Configurações de deploy na nuvem
 ---
 👨‍💻 Autor
