@@ -57,6 +57,7 @@ Com o servidor rodando, abra outro terminal e execute:
 python automacao_web.py
 ---
 💡 O robô vai ler o arquivo produtos.csv e cadastrar os itens automaticamente. Pressione ESC a qualquer momento para interromper a execução.
+---
 📁 Estrutura do Projeto
 inventory-automation/
 ├── app.py                # Servidor Flask e rotas da aplicação
