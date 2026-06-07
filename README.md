@@ -16,24 +16,24 @@ Este projeto une **Desenvolvimento Web** com **Automação de Processos (RPA)**.
 ## 🛠️ Tecnologias Utilizadas
 
 ### Backend & Web
-- **Python / Flask** — estrutura do servidor e rotas da aplicação
-- **HTML5 & CSS3 (Bootstrap 5)** — interface responsiva e moderna
-- **Vercel** — cloud hosting para o deploy da aplicação
+* **Python / Flask** — Estrutura do servidor e rotas da aplicação
+* **HTML5 & CSS3 (Bootstrap 5)** — Interface responsiva e moderna
+* **Vercel** — Cloud hosting para o deploy da aplicação
 
 ### Automação (RPA)
-- **Selenium WebDriver** — motor de automação para interação com o navegador
-- **Pandas** — manipulação e leitura de dados do arquivo CSV
-- **Keyboard** — controle de fluxo e interrupção via tecla de atalho (`ESC`)
-- **WebDriver Manager** — gestão automática de drivers do Chrome
+* **Selenium WebDriver** — Motor de automação para interação com o navegador
+* **Pandas** — Manipulação e leitura de dados do arquivo CSV
+* **Keyboard** — Controle de fluxo e interrupção via tecla de atalho (`ESC`)
+* **WebDriver Manager** — Gestão automática de drivers do Chrome
 
 ---
 
 ## 📋 Funcionalidades
 
-- **CRUD Completo** — criação, leitura, edição e exclusão de produtos na interface
-- **Automação em Massa** — o robô lê uma lista CSV e cadastra os produtos automaticamente, simulando comportamento humano em alta velocidade
-- **Análise de Margens** — visualização dinâmica de preços e custos para controle financeiro
-- **Controle de Fluxo** — botão de reset de lista e sistema de segurança para pausar o robô a qualquer momento via `ESC`
+* **CRUD Completo** — Criação, leitura, edição e exclusão de produtos na interface
+* **Automação em Massa** — O robô lê uma lista CSV e cadastra os produtos automaticamente, simulando comportamento humano em alta velocidade
+* **Análise de Margens** — Visualização dinâmica de preços e custos para controle financeiro
+* **Controle de Fluxo** — Botão de reset de lista e sistema de segurança para pausar o robô a qualquer momento via `ESC`
 
 ---
 
@@ -41,50 +41,36 @@ Este projeto une **Desenvolvimento Web** com **Automação de Processos (RPA)**.
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/EduardoFioreti/inventory-automation.git
+git clone [https://github.com/EduardoFioreti/inventory-automation.git](https://github.com/EduardoFioreti/inventory-automation.git)
 cd inventory-automation
-```
-
-### 2. Instale as dependências
-```bash
+2. Instale as dependências
+Bash
 pip install -r requirements.txt
-```
-
-### 3. Inicie o servidor
-```bash
+3. Inicie o servidor
+Bash
 python app.py
-```
-
-### 4. Acesse no navegador
-```
+4. Acesse no navegador
+Plaintext
 http://localhost:5000
-```
+5. Para rodar a automação RPA
+Com o servidor rodando, abra outro terminal e execute:
 
-### 5. Para rodar a automação RPA
-Com o servidor rodando, execute em outro terminal:
-```bash
+Bash
 python automacao_web.py
-```
-> O robô vai ler o arquivo `produtos.csv` e cadastrar os itens automaticamente. Pressione `ESC` a qualquer momento para interromper.
+💡 O robô vai ler o arquivo produtos.csv e cadastrar os itens automaticamente. Pressione ESC a qualquer momento para interromper a execução.
 
----
-
-## 📁 Estrutura do Projeto
-
-```
+📁 Estrutura do Projeto
+Plaintext
 inventory-automation/
-├── app.py                # servidor Flask e rotas
-├── automacao_web.py      # script de automação RPA
-├── produtos.csv          # lista de produtos para automação
-├── requirements.txt      # dependências do projeto
-├── templates/            # templates HTML
-└── vercel.json           # configuração de deploy
-```
+├── app.py                # Servidor Flask e rotas da aplicação
+├── automacao_web.py      # Script de automação RPA (Selenium)
+├── produtos.csv          # Lista de produtos base para a automação
+├── requirements.txt      # Dependências e bibliotecas do projeto
+├── templates/            # Páginas e interfaces HTML (Jinja2)
+└── vercel.json           # Configurações de deploy na nuvem
+👨‍💻 Autor
+Eduardo Fioreti
 
----
+🔗 LinkedIn: linkedin.com/in/eduardo-fioreti-4a8931371
 
-## 👨‍💻 Autor
-
-**Eduardo Fioreti**
-- LinkedIn: [linkedin.com/in/eduardofioreti](https://www.linkedin.com/in/eduardofioreti)
-- Email: eduardofioretidev@gmail.com
+📧 Email: eduardofioretidev@gmail.com
