@@ -1,82 +1,263 @@
-# 🚀 Sistema de Gestão de Inventário com Automação Robótica (RPA)
+# 🤖 Inventory Automation — Sistema de Gestão de Inventário com Automação Robótica (RPA)
 
-Este projeto une **Desenvolvimento Web** com **Automação de Processos (RPA)**. O sistema consiste em uma plataforma de cadastro de produtos integrada a um robô que realiza o preenchimento em massa de dados a partir de arquivos CSV.
+Aplicação web para gerenciamento de produtos integrada a um robô de automação capaz de realizar cadastros em massa a partir de arquivos CSV.
 
-> **Status do Projeto:** 🟢 Produção (Vercel)
-> **Link do Sistema:** [projeto-cadastro-lake.vercel.app](https://projeto-cadastro-lake.vercel.app/)
+O projeto combina conceitos de **Desenvolvimento Web**, **Automação de Processos (RPA)**, **Manipulação de Dados** e **Integração entre Sistemas**, utilizando Python como linguagem principal.
 
----
+🔗 **Sistema Online:** https://projeto-cadastro-lake.vercel.app/
 
-## 📸 Interface
-
-![Controle de Inventário](screenshot.png)
+> 🚀 Projeto publicado em produção utilizando Vercel.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🎯 Objetivo do Projeto
 
-### Backend & Web
-* **Python / Flask** — Estrutura do servidor e rotas da aplicação
-* **HTML5 & CSS3 (Bootstrap 5)** — Interface responsiva e moderna
-* **Vercel** — Cloud hosting para o deploy da aplicação
+Empresas frequentemente precisam cadastrar centenas de produtos em sistemas internos.
 
-### Automação (RPA)
-* **Selenium WebDriver** — Motor de automação para interação com o navegador
-* **Pandas** — Manipulação e leitura de dados do arquivo CSV
-* **Keyboard** — Controle de fluxo e interrupção via tecla de atalho (`ESC`)
-* **WebDriver Manager** — Gestão automática de drivers do Chrome
+Este projeto foi desenvolvido para automatizar esse processo através de um robô que lê informações de arquivos CSV e realiza os cadastros automaticamente, reduzindo erros manuais e aumentando a produtividade operacional.
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+| Camada               | Tecnologia         |
+| -------------------- | ------------------ |
+| Backend              | Flask              |
+| Frontend             | HTML5              |
+| Estilização          | CSS3 + Bootstrap 5 |
+| Automação RPA        | Selenium WebDriver |
+| Manipulação de Dados | Pandas             |
+| Controle de Execução | Keyboard           |
+| Drivers              | WebDriver Manager  |
+| Deploy               | Vercel             |
+| Versionamento        | Git + GitHub       |
 
 ---
 
 ## 📋 Funcionalidades
 
-* **CRUD Completo** — Criação, leitura, edição e exclusão de produtos na interface
-* **Automação em Massa** — O robô lê uma lista CSV e cadastra os produtos automaticamente, simulando comportamento humano em alta velocidade
-* **Análise de Margens** — Visualização dinâmica de preços e custos para controle financeiro
-* **Controle de Fluxo** — Botão de reset de lista e sistema de segurança para pausar o robô a qualquer momento via `ESC`
+### 📦 Gestão de Produtos
+
+* Cadastro de produtos
+* Edição de registros
+* Exclusão de produtos
+* Consulta de inventário
+* Controle de preços e custos
+
+### 📊 Análise Financeira
+
+* Visualização de custos
+* Controle de margem de lucro
+* Comparação de preços
+* Organização de dados para tomada de decisão
+
+### 🤖 Automação Robótica (RPA)
+
+O robô realiza automaticamente:
+
+* Leitura de arquivos CSV
+* Preenchimento de formulários web
+* Cadastro em massa de produtos
+* Navegação automatizada entre páginas
+* Tratamento de fluxo operacional
+
+### 🛑 Controle de Segurança
+
+* Interrupção imediata através da tecla ESC
+* Reset automático de listas
+* Encerramento seguro da execução
 
 ---
 
-## 🚀 Como Executar
+## 🏗️ Arquitetura da Aplicação
 
-### 1. Clone o repositório
-git clone [https://github.com/EduardoFioreti/inventory-automation.git](https://github.com/EduardoFioreti/inventory-automation.git)
-cd inventory-automation
----
-2. Instale as dependências:
-pip install -r requirements.txt
----
-3. Inicie o servidor:
-python app.py
----
-4. Acesse no navegador:
-http://localhost:5000
----
-5. Para rodar a automação RPA
-Com o servidor rodando, abra outro terminal e execute:
-python automacao_web.py
----
-💡 O robô vai ler o arquivo produtos.csv e cadastrar os itens automaticamente. 
-Pressione ESC a qualquer momento para interromper a execução.
----
-📁 **Estrutura do Projeto**
+```text
+Arquivo CSV
+      ↓
+    Pandas
+      ↓
+Automação Selenium
+      ↓
+Sistema Flask
+      ↓
+Banco de Dados
+```
 
+A arquitetura foi projetada para demonstrar a integração entre sistemas web e automação de processos empresariais.
+
+---
+
+## 📁 Estrutura do Projeto
+
+```text
 inventory-automation/
+│
+├── app.py
+│   └── Aplicação Flask
+│
+├── automacao_web.py
+│   └── Robô de automação RPA
+│
+├── produtos.csv
+│   └── Dados utilizados pelo robô
+│
+├── requirements.txt
+│   └── Dependências do projeto
+│
+├── templates/
+│   └── Interfaces HTML
+│
+├── static/
+│   └── Arquivos CSS
+│
+└── vercel.json
+    └── Configuração de deploy
+```
+
 ---
-├── app.py                # Servidor Flask e rotas da aplicação
+
+## ⚙️ Fluxo da Automação
+
+O processo automatizado segue as etapas:
+
+1. Leitura do arquivo CSV
+2. Conversão dos dados utilizando Pandas
+3. Inicialização do navegador pelo Selenium
+4. Navegação até o formulário web
+5. Preenchimento automático dos campos
+6. Envio das informações
+7. Repetição do processo para todos os registros
+
 ---
-├── automacao_web.py      # Script de automação RPA (Selenium)
+
+## 💡 Conceitos Aplicados
+
+Durante o desenvolvimento foram utilizados:
+
+* Desenvolvimento Web com Flask
+* Arquitetura MVC
+* Automação Robótica de Processos (RPA)
+* Manipulação de dados com Pandas
+* Automação de navegador com Selenium
+* Tratamento de exceções
+* Integração entre aplicações
+* Deploy em ambiente de produção
+
 ---
-├── produtos.csv          # Lista de produtos base para a automação
+
+## 🚀 Como Executar Localmente
+
+### 1. Clonar o Repositório
+
+```bash
+git clone https://github.com/EduardoFioreti/inventory-automation.git
+
+cd inventory-automation
+```
+
+### 2. Criar Ambiente Virtual
+
+```bash
+python -m venv venv
+```
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+### 3. Instalar Dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Executar a Aplicação
+
+```bash
+python app.py
+```
+
+### 5. Acessar o Sistema
+
+```text
+http://localhost:5000
+```
+
 ---
-├── requirements.txt      # Dependências e bibliotecas do projeto
+
+## 🤖 Executando a Automação
+
+Com a aplicação em execução, abra um novo terminal e execute:
+
+```bash
+python automacao_web.py
+```
+
+O robô irá:
+
+* Ler o arquivo produtos.csv
+* Abrir o navegador automaticamente
+* Preencher os formulários
+* Realizar os cadastros em massa
+
+Para interromper a execução:
+
+```text
+Pressione ESC
+```
+
 ---
-├── templates/            # Páginas e interfaces HTML (Jinja2)
+
+## 📸 Screenshots
+
+### Dashboard
+
+```text
+screenshots/dashboard.png
+```
+
+### Cadastro de Produtos
+
+```text
+screenshots/cadastro.png
+```
+
+### Automação em Execução
+
+```text
+screenshots/automacao.png
+```
+
 ---
-└── vercel.json           # Configurações de deploy na nuvem
+
+## 🔮 Roadmap
+
+* [ ] Upload de CSV pela interface
+* [ ] Dashboard analítico
+* [ ] Histórico de execuções
+* [ ] Logs detalhados da automação
+* [ ] Integração com banco MySQL
+* [ ] Dockerização da aplicação
+* [ ] Agendamento automático de execuções
+
 ---
-👨‍💻 Autor
-Eduardo Fioreti
----
-🔗 LinkedIn: linkedin.com/in/eduardo-fioreti-4a8931371
-📧 Email: eduardofioretidev@gmail.com
+
+## 👨‍💻 Autor
+
+**Eduardo Fioreti**
+
+🎓 Engenharia da Computação — UniCEUMA
+
+🔗 GitHub: https://github.com/EduardoFioreti
+
+💼 LinkedIn: https://linkedin.com/in/eduardo-fioreti-4a8931371
+
+📧 E-mail: [eduardofioretidev@gmail.com](mailto:eduardofioretidev@gmail.com)
